@@ -44,10 +44,13 @@ def getRandomImage():
 #show an image when you start the program
 display.show(getRandomImage())
 
+# rolling = False
 while True:
     gesture = accelerometer.current_gesture()
-    if gesture == "shake":
+    if gesture == "shake":# and rolling ==False:
+        # rolling = True
+        # for i in range(10):
         display.show(getRandomImage())
-    #sleep controls the speed of the rolling dice animation
-    sleep(100)
-        
+        #sleep controls the speed of the rolling dice animation
+        sleep(100)
+        # rolling = False
