@@ -1,4 +1,3 @@
-# Add your Python code here. E.g.
 import random
 from microbit import *
 image1 = Image("00000:"
@@ -36,17 +35,19 @@ image6 = Image("09090:"
                     
 diceImages = [image1, image2, image3, image4, image5, image6]
 
+
 def getRandomImage():
-    return diceImages[random.randint(0,len(diceImages))]
+    #pick random number from 0 to 5
+    randomRoll = random.randint(0, len(diceImages)-1)
+    return diceImages[randomRoll]
+    
+#show an image when you start the program
+display.show(getRandomImage())
 
 while True:
     gesture = accelerometer.current_gesture()
     if gesture == "shake":
-        #pick random number from 1 to 6
-        randomRoll = random.randint(0, len(diceImages))
-        display.show(randomRoll)
-        display.show(diceImages[randomRoll])
-        # microbit.sleep(1000)
+        display.show(getRandomImage())
+    #sleep controls the speed of the rolling dice animation
+    sleep(100)
         
-
-display.show(getRandomImage())
